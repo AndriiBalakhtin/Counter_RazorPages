@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Counting";
+}
+
+<div>
+    <h2>Product List</h2>
+    <table class="table table-responsive table-hover table-striped">
+        <thead>
+            <tr>
+                @foreach (var product in IndexModel.Products)
+                {
+                    <th>@product.Name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var product in IndexModel.Products)
+                {
+                    <td>@product.Counter</td>
+                }
+            </tr>
+            <tr>
+                @foreach (var product in IndexModel.Products)
+                {
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" class="btn btn-primary">+</button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
